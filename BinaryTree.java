@@ -1,56 +1,50 @@
+// BinaryTree class
 public class BinaryTree {
+
+    // Private Fields
     private Node root;
 
-    public BinaryTree() {
-        this.root = null;
-    }
+    // Constructor
+    public BinaryTree(Node root) {
 
-    // Method to set the root node
-    public void setRoot(Node root) {
+        // Set the root of the tree to the given root
         this.root = root;
     }
 
-    // Method to count and return the number of left child nodes
-    public int countLeftChildNodes() {
-        return countLeftChildNodesRecursive(root);
-    }
-
-    // Recursive auxiliary method to count left child nodes
-    private int countLeftChildNodesRecursive(Node node) {
-        if (node == null) {
-            return 0;
-        }
-
-        int leftChildNodes = countLeftChildNodesRecursive(node.getLeft());
-
-        if (node.getLeft() != null) {
-            leftChildNodes++;
-        }
-
-        return leftChildNodes + countLeftChildNodesRecursive(node.getRight());
-    }
-
-    // Method to print the IDs of the binary tree with proportional indentation
+    // Print the tree with indentation
     public void printWithIndentation() {
         printWithIndentationRecursive(root, 0);
     }
 
-    // Recursive auxiliary method for printing with indentation
+    // Print the tree with indentation recursively starting from the root
     private void printWithIndentationRecursive(Node node, int level) {
-        if (node == null) {
-            return;
-        }
 
-        // Prints the indentation according to the level
+        // if the node is not null
+        if (node != null) {
+
+            // Print the indentation
+            printIndentation(level);
+
+            // Print the node id
+            System.out.println(node.getId());
+
+            // Print the left and right children
+            printWithIndentationRecursive(node.getLeft(), level + 1);
+            printWithIndentationRecursive(node.getRight(), level + 1);
+        } else {
+
+            // Print the indentation
+            printIndentation(level);
+
+            // Print a dash indicating a null node
+            System.out.println("-");
+        }
+    }
+
+    // Print the indentation based on the level
+    private void printIndentation(int level) {
         for (int i = 0; i < level; i++) {
-            System.out.print("    ");
+            System.out.print("   "); // Three spaces per level
         }
-
-        // Prints the ID of the node
-        System.out.println(node.getId());
-
-        // Recursive calls for the children
-        printWithIndentationRecursive(node.getLeft(), level + 1);
-        printWithIndentationRecursive(node.getRight(), level + 1);
     }
 }

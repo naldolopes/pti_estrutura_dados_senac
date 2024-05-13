@@ -1,15 +1,19 @@
+// Node class
 public class Node {
 
-    private long id;
+    // Private Fields
+    private int id;
     private Node left, right;
 
-    public Node(long id, Node left, Node right) {
+    // Constructor
+    public Node(int id, Node left, Node right) {
         this.id = id;
         this.left = left;
         this.right = right;
     }
 
-    public long getId() {
+    // Getters
+    public int getId() {
         return this.id;
     }
 
