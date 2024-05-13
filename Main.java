@@ -16,7 +16,7 @@ public class Main {
         BinaryTree tree = new BinaryTree(root);
 
         // Print the tree with indentation and the nodes
-        System.out.println("Binary Tree Output:");
+        System.out.println("\nBinary Tree Output:\n");
         tree.printWithIndentation();
     }
 }
